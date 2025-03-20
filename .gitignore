@@ -1,1 +1,11 @@
 /.idea
+/APBD_02/bin
+/APBD_02/obj/Debug
+/APBD_02/obj/APBD_02.csproj.nuget.g.props
+/APBD_02/obj/APBD_02.csproj.nuget.dgspec.json
+/APBD_02/obj/APBD_02.csproj.nuget.g.targets
+/APBD_02/obj/project.assets.json
+/APBD_02/obj/project.nuget.cache
+/APBD_02/obj/rider.project.restore.info
+/APBD_02/obj/project.packagespec.json
+/Folder.DotSettings.user
