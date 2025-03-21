@@ -7,7 +7,7 @@ public class Container4Gas : Container, IHazardNotifier
     public Container4Gas(double high, double containerMass, double depth, double maxLoad, DistributionCenter dc, double pressure)
         : base(high, containerMass, depth, maxLoad, dc)
     {
-        this.Pressure = pressure;
+        Pressure = pressure;
     }
 
     public void Notify()

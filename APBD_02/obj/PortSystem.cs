@@ -36,6 +36,7 @@ public class PortSystem
         
         
         // ======== Załadowywanie kontenerów na kontenerowce, transfer i ich rozładywanie ==========
+        Console.WriteLine("\n==========Kontenerowiec Tytanik========");
         ContainerShip cs01 = new ContainerShip(2, 2, 30, "Tytanik");
         cs01.ListContainers();
         cs01.AddContainer("KON-L-0",dc);
@@ -45,6 +46,7 @@ public class PortSystem
         cs01.AddContainer("KON-C-2",dc); // Przekroczenie max ilości kontenerów
         cs01.ListContainers();
         
+        Console.WriteLine("\n==========Kontenerowiec Barabasz========");
         ContainerShip cs02 = new ContainerShip(2, 2, 30, "Barabasz");
         cs02.AddContainer("KON-G-1",dc); // Kontener już w innym statku
         TransferContainer(cs01,cs02,"KON-G-1",dc);   // Transfer kontenera z jednego statku na drugi

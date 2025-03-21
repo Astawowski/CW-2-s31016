@@ -10,13 +10,15 @@ public class ContainerShip
 
     public ContainerShip(double maxSpeed, int maxContainerCount, double maxContainerWeight, string shipName)
     {
-        this.MaxSpeed = maxSpeed;
-        this.MaxContainersCount = maxContainerCount;
-        this.MaxContainersWeight = maxContainerWeight;
-        this.Containers = new List<Container>();
-        this.ShipName = shipName;
+        MaxSpeed = maxSpeed;
+        MaxContainersCount = maxContainerCount;
+        MaxContainersWeight = maxContainerWeight;
+        Containers = new List<Container>();
+        ShipName = shipName;
     }
 
+    
+    
     public void AddContainer(String containerSn, DistributionCenter dc)
     {
         Container? container = dc.GetContainer(containerSn);
@@ -48,11 +50,14 @@ public class ContainerShip
     }
 
 
+    
     public void AddContainers(List<string> containersSn, DistributionCenter dc)
     {
         foreach (string containerSn in containersSn) AddContainer(containerSn, dc);
     }
 
+    
+    
     
     public void RemoveContainer(String containerSn, DistributionCenter dc)
     {
@@ -78,6 +83,8 @@ public class ContainerShip
         Console.WriteLine("Container: " +container.GetSerialNumber()+" has been removed from the ship: "+ShipName);
     }
 
+    
+    
     public void ListContainers()
     {
         Console.WriteLine("\nShip: "+ShipName+" has containers: ");

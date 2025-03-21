@@ -1,6 +1,4 @@
-﻿using APBD_02.obj;
-
-namespace APBD_02;
+﻿namespace APBD_02;
 
 public class Container4Liquid : Container, IHazardNotifier
 {
