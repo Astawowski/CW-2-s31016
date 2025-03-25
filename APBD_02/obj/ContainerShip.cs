@@ -1,12 +1,12 @@
-﻿namespace APBD_02;
+﻿namespace APBD_02.obj;
 
 public class ContainerShip
 {
-    private List<Container> Containers { get; set; }
-    protected double MaxSpeed { get; set; }
-    private int MaxContainersCount { get; set; }
-    private double MaxContainersWeight { get; set; }
-    public string ShipName { get; set; }
+    private List<Container> Containers { get; }
+    protected double MaxSpeed;
+    private int MaxContainersCount { get; }
+    private double MaxContainersWeight { get; }
+    public string ShipName { get; }
 
     public ContainerShip(double maxSpeed, int maxContainerCount, double maxContainerWeight, string shipName, DistributionCenter dc)
     {
@@ -78,7 +78,6 @@ public class ContainerShip
                 Containers.RemoveAt(i);
                 break;
             }
-                
         }
         container.TransportingShip = null;
         Console.WriteLine("Container: " +container.GetSerialNumber()+" has been removed from the ship: "+ShipName);
@@ -93,6 +92,5 @@ public class ContainerShip
             Console.WriteLine(container.GetSerialNumber());
         }
     }
-    
     
 }

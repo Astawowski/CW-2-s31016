@@ -1,4 +1,4 @@
-﻿namespace APBD_02;
+﻿namespace APBD_02.obj;
 
 public class Container4Cooled : Container
 {
@@ -14,12 +14,12 @@ public class Container4Cooled : Container
     public override void LoadContainer(double newLoadMass, Product product)
     {
         if (IsTemperatureTooLow(product)) return;
-        if ((ProductType != null )&&(product.name != ProductType))
+        if ((ProductType != null )&&(product.Name != ProductType))
         {
             Console.WriteLine("Container: "+ GetSerialNumber() +" can not be loaded with this product type.");
             return;
         }
-        this.ProductType = product.name;
+        this.ProductType = product.Name;
         base.LoadContainer(newLoadMass, product);
     }
 
@@ -45,7 +45,7 @@ public class Container4Cooled : Container
         if(Products.Count == 0) Console.WriteLine("Container is empty.");
         foreach(Product product in Products)
         {
-            Console.WriteLine(product.name);
+            Console.WriteLine(product.Name);
         }
         Console.WriteLine("Temperature: " + Temperature);
         Console.WriteLine("ProductType: " + ProductType);

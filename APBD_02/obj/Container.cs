@@ -1,13 +1,13 @@
-﻿namespace APBD_02;
+﻿namespace APBD_02.obj;
 
 public abstract class Container{
-    public double LoadMass { get; set; }    // by default the container is empty
-    protected double High { get; set; }
+    public double LoadMass { get; set; }
+    protected double High;
     public double ContainerTaraMass { get; set; }
-    protected double Depth { get; set; }
-    protected int SerialNumberInt { get; }  // automatically assigned
+    protected double Depth;
+    protected int SerialNumberInt { get; }  
     protected double MaxLoad { get; set; }
-    protected List<Product> Products { get; set; }  // empty container has no products inside
+    protected List<Product> Products { get; set; }  
     public ContainerShip? TransportingShip { get; set; }
 
     protected Container(double high, double containerMass, double depth, double maxLoad, DistributionCenter dc)
@@ -35,7 +35,7 @@ public abstract class Container{
             throw new OverfillException("Load is too high for the container: "+ GetSerialNumber());
         LoadMass += newLoadMass;
         Products.Add(product);
-        Console.WriteLine("The container: " + GetSerialNumber() + " has been loaded with: "+newLoadMass+"kg of: "+ product.name+"\nCurrState: "+LoadMass+'\\'+MaxLoad+"kg");
+        Console.WriteLine("The container: " + GetSerialNumber() + " has been loaded with: "+newLoadMass+"kg of: "+ product.Name+"\nCurrState: "+LoadMass+'\\'+MaxLoad+"kg");
     }
     
     public virtual string GetSerialNumber()
@@ -49,7 +49,7 @@ public abstract class Container{
         if(Products.Count == 0) Console.WriteLine("Container is empty.");
         foreach(Product product in Products)
         {
-            Console.WriteLine(product.name);
+            Console.WriteLine(product.Name);
         }
         Console.WriteLine("===Total load mass: "+LoadMass+'\\'+MaxLoad+"kg===\n");
     }

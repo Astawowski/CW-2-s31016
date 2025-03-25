@@ -1,33 +1,33 @@
-﻿namespace APBD_02;
+﻿namespace APBD_02.obj;
 
 public class Product
 {
-    public string name { get; set; }
+    public string Name { get; set; }
     public double? MinTemperatureRequired { get; set; }
     public bool HazardousLoad { get; set; }
 
     public Product(string type, double temperatureRequired)
     {
-        name = type;
+        Name = type;
         MinTemperatureRequired = temperatureRequired;
         HazardousLoad = false;
     }
     
     public Product(string type)
     {
-        name = type;
+        Name = type;
         HazardousLoad = false;
     }
     
     public Product(string type, bool hazardousLoad)
     {
-        name = type;
+        Name = type;
         HazardousLoad = hazardousLoad;
     }
     
     public Product(string type, double temperatureRequired, bool hazardousLoad)
     {
-        name = type;
+        Name = type;
         HazardousLoad = hazardousLoad;
         MinTemperatureRequired = temperatureRequired;
     }

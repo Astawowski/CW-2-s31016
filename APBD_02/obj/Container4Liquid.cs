@@ -1,4 +1,4 @@
-﻿namespace APBD_02;
+﻿namespace APBD_02.obj;
 
 public class Container4Liquid : Container, IHazardNotifier
 {
@@ -47,7 +47,7 @@ public class Container4Liquid : Container, IHazardNotifier
         if(Products.Count == 0) Console.WriteLine("Container is empty.");
         foreach(Product product in Products)
         {
-            Console.WriteLine(product.name);
+            Console.WriteLine(product.Name);
         }
         Console.WriteLine("Hazardous Load: " + HasHazardousLoad);
         Console.WriteLine("===Total load mass: "+LoadMass+'\\'+MaxLoad+"kg===\n");

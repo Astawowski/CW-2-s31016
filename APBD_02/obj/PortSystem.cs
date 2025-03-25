@@ -7,7 +7,9 @@ public class PortSystem
         DistributionCenter dc = new DistributionCenter();
         
         // ===============================TEST=======================================================
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("========================Rozpoczęcie pokazu testowego=================================");
+        Console.ResetColor();
         // =========Tworzenie kontenerów i ich załadywania oraz opróżnianie=============
         Console.WriteLine("\n=======Kontener na Płyny===========");
         Container4Liquid c01 = new Container4Liquid(2, 1500, 15, 15000, dc);
@@ -60,7 +62,9 @@ public class PortSystem
         cs02.AddContainers(containers2Add,dc); // Dodawanie listy kontenerów
         cs02.RemoveContainer("KON-G-1",dc); 
         ReplaceContainer("KON-C-2","KON-G-1",cs02,dc); // Podmiana kontenerów
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("========================Koniec pokazu testowego=================================\n\n");
+        Console.ResetColor();
         //=======================================================================================================
         
         ShowHelp();
@@ -111,13 +115,13 @@ public class PortSystem
     private static void CreateContainer(DistributionCenter dc)
     {
         Console.WriteLine("Podaj parametr: Wysokość.");
-        double high = double.Parse(Console.ReadLine());
+        double high = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Masa kontenera.");
-        double containerMass = double.Parse(Console.ReadLine());
+        double containerMass = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Głębokość.");
-        double depth = double.Parse(Console.ReadLine());
+        double depth = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Maksymalna ładowność.");
-        double loadMass = double.Parse(Console.ReadLine());
+        double loadMass = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj typ kontenera: 'Liquid' / 'Gas' / 'Cooled'");
         string? containerType = Console.ReadLine();
         if (containerType == "Liquid")
@@ -127,13 +131,13 @@ public class PortSystem
         else if (containerType == "Gas")
         {
             Console.WriteLine("Podaj parametr: Ciśnienie.");
-            double pressure = double.Parse(Console.ReadLine());
+            double pressure = double.Parse(Console.ReadLine()!);
             new Container4Gas(high, containerMass, depth, loadMass, dc, pressure);
         }
         else if (containerType == "Cooled")
         {
             Console.WriteLine("Podaj parametr: Temperatura.");
-            double temperature = double.Parse(Console.ReadLine());
+            double temperature = double.Parse(Console.ReadLine()!);
             new Container4Cooled(high, containerMass, depth, loadMass, dc, temperature);
         }
         else
@@ -151,19 +155,19 @@ public class PortSystem
         Console.WriteLine("Podaj nazwe produktu do załadowania:");
         string? productName = Console.ReadLine();
         Console.WriteLine("Podaj minimalną wymaganą temperature.");
-        double minTemperature = double.Parse(Console.ReadLine());
+        double minTemperature = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Czy produkt niebezpieczny? 'true' or 'false'");
-        bool hazardous = bool.Parse(Console.ReadLine());
+        bool hazardous = bool.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj masę produktu:");
-        double mass = double.Parse(Console.ReadLine());
-        dc.GetContainer(containerSn).LoadContainer(mass,new Product(productName, minTemperature, hazardous));
+        double mass = double.Parse(Console.ReadLine()!);
+        dc.GetContainer(containerSn!)!.LoadContainer(mass,new Product(productName!, minTemperature, hazardous));
     }
     
     private static void EmptyContainer(DistributionCenter dc)
     {
         Console.WriteLine("Podaj numer seryjny kontenera do wyświetlenia:");
         string? containerSn = Console.ReadLine();
-        dc.GetContainer(containerSn).EmptyContainer();
+        dc.GetContainer(containerSn!)!.EmptyContainer();
     }
     
     private static void ListContainers(DistributionCenter dc)
@@ -177,19 +181,19 @@ public class PortSystem
     {
         Console.WriteLine("Podaj numer seryjny kontenera do wyświetlenia:");
         string? containerSn = Console.ReadLine();
-        dc.GetContainer(containerSn).ListContainer();
+        dc.GetContainer(containerSn!)!.ListContainer();
     }
     
     private static void CreateContainerShip(DistributionCenter dc)
     {
         Console.WriteLine("Podaj parametr: Max Prędkość.");
-        double maxSpeed = double.Parse(Console.ReadLine());
+        double maxSpeed = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Max ilość kontenerów.");
-        int maxContainerCount = int.Parse(Console.ReadLine());
+        int maxContainerCount = int.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Max ładowność statku.");
-        double maxContainersMass = double.Parse(Console.ReadLine());
+        double maxContainersMass = double.Parse(Console.ReadLine()!);
         Console.WriteLine("Podaj parametr: Nazwa statku.");
-        string shipName = Console.ReadLine();
+        string shipName = Console.ReadLine()!;
         new ContainerShip(maxSpeed, maxContainerCount, maxContainersMass, shipName, dc);
         Console.WriteLine("Utworzono nowy kontenerowiec.");
     }
@@ -205,13 +209,13 @@ public class PortSystem
     {
         int i = 1;
         Console.WriteLine("Podaj nazwę kontenerowca:");
-        string shipName = Console.ReadLine();
+        string shipName = Console.ReadLine()!;
         while (i + loop > 0)
         {
             Console.WriteLine("Podaj numer seryjny kontenera do dodania");
-            string containerSn = Console.ReadLine();
+            string containerSn = Console.ReadLine()!;
             if (containerSn == "-1") return;
-            dc.GetContainerShip(shipName).AddContainer(containerSn, dc);
+            dc.GetContainerShip(shipName)!.AddContainer(containerSn, dc);
             i--;
             if(loop > 0) Console.WriteLine("'-1' By przerwać.");
         }
@@ -220,41 +224,41 @@ public class PortSystem
     private static void RemoveContainer(DistributionCenter dc)
     {
         Console.WriteLine("Podaj nazwę kontenerowca:");
-        string shipName = Console.ReadLine();
+        string shipName = Console.ReadLine()!;
         Console.WriteLine("Podaj numer seryjny kontenera do usunięcia");
-        string containerSn = Console.ReadLine();
-        dc.GetContainerShip(shipName).RemoveContainer(containerSn,dc);
+        string containerSn = Console.ReadLine()!;
+        dc.GetContainerShip(shipName!)!.RemoveContainer(containerSn,dc);
     }
     
     private static void ReplaceContainer(DistributionCenter dc)
     {
         Console.WriteLine("Podaj nazwę kontenerowca, na którym chcesz podmienić kontener.");
-        string shipName = Console.ReadLine();
+        string shipName = Console.ReadLine()!;
         Console.WriteLine("Podaj numer seryjny kontenera, który chcesz odstawić.");
-        string containerSn1 = Console.ReadLine();
+        string containerSn1 = Console.ReadLine()!;
         Console.WriteLine("Podaj numer seryjny kontenera, który chcesz wstawić.");
-        string containerSn2 = Console.ReadLine();
-        dc.GetContainerShip(shipName).RemoveContainer(containerSn1,dc);
-        dc.GetContainerShip(shipName).AddContainer(containerSn2,dc);
+        string containerSn2 = Console.ReadLine()!;
+        dc.GetContainerShip(shipName)!.RemoveContainer(containerSn1,dc);
+        dc.GetContainerShip(shipName)!.AddContainer(containerSn2,dc);
     }
 
     private static void TransferContainer(DistributionCenter dc)
     {
         Console.WriteLine("Podaj nazwę kontenerowca, z którego chcesz zabrać kontener.");
-        string shipNameFrom = Console.ReadLine();
+        string shipNameFrom = Console.ReadLine()!;
         Console.WriteLine("Podaj nazwę kontenerowca, na który chcesz dodać ten kontener.");
-        string shipNameTo = Console.ReadLine();
+        string shipNameTo = Console.ReadLine()!;
         Console.WriteLine("Podaj numer seryjny kontenera, który chcesz przetransferować.");
-        string containerSn = Console.ReadLine();
-        dc.GetContainerShip(shipNameFrom).RemoveContainer(containerSn,dc);
-        dc.GetContainerShip(shipNameTo).AddContainer(containerSn,dc);
+        string containerSn = Console.ReadLine()!;
+        dc.GetContainerShip(shipNameFrom)!.RemoveContainer(containerSn,dc);
+        dc.GetContainerShip(shipNameTo)!.AddContainer(containerSn,dc);
     }
     
     private static void ShowContainerShip(DistributionCenter dc)
     {
         Console.WriteLine("Podaj nazwę kontenerowca:");
-        string shipName = Console.ReadLine();
-        dc.GetContainerShip(shipName).ListContainers();
+        string shipName = Console.ReadLine()!;
+        dc.GetContainerShip(shipName)!.ListContainers();
     }
 
     
