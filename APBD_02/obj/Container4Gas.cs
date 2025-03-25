@@ -25,4 +25,17 @@ public class Container4Gas : Container, IHazardNotifier
     {
         return "KON-G-" + SerialNumberInt;
     }
+    
+    
+    public override void ListContainer()
+    {
+        Console.WriteLine("\n===Container: "+GetSerialNumber()+" has inside:===");
+        if(Products.Count == 0) Console.WriteLine("Container is empty.");
+        foreach(Product product in Products)
+        {
+            Console.WriteLine(product.name);
+        }
+        Console.WriteLine("Pressure: "+Pressure+ " atm");
+        Console.WriteLine("===Total load mass: "+LoadMass+'\\'+MaxLoad+"kg===\n");
+    }
 }
