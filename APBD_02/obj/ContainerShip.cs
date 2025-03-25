@@ -2,22 +2,28 @@
 
 public class ContainerShip
 {
-    protected List<Container> Containers { get; set; }
+    private List<Container> Containers { get; set; }
     protected double MaxSpeed { get; set; }
-    protected int MaxContainersCount { get; set; }
-    protected double MaxContainersWeight { get; set; }
+    private int MaxContainersCount { get; set; }
+    private double MaxContainersWeight { get; set; }
     public string ShipName { get; set; }
 
-    public ContainerShip(double maxSpeed, int maxContainerCount, double maxContainerWeight, string shipName)
+    public ContainerShip(double maxSpeed, int maxContainerCount, double maxContainerWeight, string shipName, DistributionCenter dc)
     {
         MaxSpeed = maxSpeed;
         MaxContainersCount = maxContainerCount;
         MaxContainersWeight = maxContainerWeight;
         Containers = new List<Container>();
         ShipName = shipName;
+        if (dc.GetContainerShip(ShipName) == null)
+        {
+            dc.ExistingContainerShips.Add(this);
+        }
+        else
+        {
+            Console.WriteLine("Taki kontener już istnieje!");
+        }
     }
-
-    
     
     public void AddContainer(String containerSn, DistributionCenter dc)
     {
@@ -48,16 +54,11 @@ public class ContainerShip
 
         Console.WriteLine("Container: " +container.GetSerialNumber()+" has been added to the ship: "+ShipName);
     }
-
-
     
     public void AddContainers(List<string> containersSn, DistributionCenter dc)
     {
         foreach (string containerSn in containersSn) AddContainer(containerSn, dc);
     }
-
-    
-    
     
     public void RemoveContainer(String containerSn, DistributionCenter dc)
     {
@@ -82,8 +83,6 @@ public class ContainerShip
         container.TransportingShip = null;
         Console.WriteLine("Container: " +container.GetSerialNumber()+" has been removed from the ship: "+ShipName);
     }
-
-    
     
     public void ListContainers()
     {

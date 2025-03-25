@@ -25,5 +25,11 @@ public class Product
         HazardousLoad = hazardousLoad;
     }
     
+    public Product(string type, double temperatureRequired, bool hazardousLoad)
+    {
+        name = type;
+        HazardousLoad = hazardousLoad;
+        MinTemperatureRequired = temperatureRequired;
+    }
     
 }

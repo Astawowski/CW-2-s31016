@@ -2,7 +2,7 @@
 
 public class Container4Liquid : Container, IHazardNotifier
 {
-	protected bool HasHazardousLoad { set; get; }
+	private bool HasHazardousLoad { set; get; }
     
     public Container4Liquid(double high, double containerMass, double depth, double maxLoad, DistributionCenter dc)
         : base(high, containerMass, depth, maxLoad, dc)

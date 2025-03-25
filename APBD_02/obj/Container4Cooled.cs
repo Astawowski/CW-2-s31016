@@ -2,8 +2,8 @@
 
 public class Container4Cooled : Container
 {
-    protected double Temperature { get; set; }
-    protected String? ProductType { get; set; }
+    private double Temperature { get; set; }
+    private String? ProductType { get; set; }
     
     public Container4Cooled(double high, double containerMass, double depth, double maxLoad, DistributionCenter dc, double temperature)
         : base(high, containerMass, depth, maxLoad, dc)
